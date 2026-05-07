@@ -64,13 +64,11 @@ open index.html
 
 ```
 todo-app/
-├── index.html        # Main HTML structure & layout
-├── style.css         # Glassmorphism styles & animations
-├── script.js         # App logic (CRUD, filters, drag & drop)
-├── preview-dark.png  # Screenshot - dark mode (اضيفيها بنفسك)
-├── preview-light.png # Screenshot - light mode (اضيفيها بنفسك)
-├── .gitignore        # Files to ignore in Git
-└── README.md         # You are here!
+├── index.html        
+├── style.css     
+├── script.js         
+├── .gitignore       
+└── README.md       
 ```
 
 ---
@@ -112,12 +110,6 @@ Contributions, issues, and feature requests are welcome!
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-
----
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
