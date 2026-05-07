@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>To-Do List</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Sortable/1.15.2/Sortable.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+
+<body class="flex items-start justify-center p-3 sm:p-6">
+
+  <div class="w-full max-w-xl mt-4 sm:mt-8">
+
+    <div class="glass rounded-2xl p-4 sm:p-6 mb-4 sm:mb-6 text-center relative">
+      <h1 class="text-2xl sm:text-3xl font-bold text-white tracking-wide">📝 To Do List</h1>
+      <p class="text-white/40 text-xs sm:text-sm mt-1">Stay productive, stay organized</p>
+      <button id="modeToggleBtn" onclick="toggleMode()" class="absolute top-3 right-3 icon-btn text-xl" title="Toggle Mode">🌙</button>
+    </div>
+
+    <div class="grid grid-cols-3 gap-3 mb-5">
+      <div class="glass rounded-xl p-3 text-center">
+        <div id="totalCount" class="text-2xl font-bold text-white">0</div>
+        <div class="text-white/50 text-xs mt-1">Total</div>
+      </div>
+      <div class="glass rounded-xl p-3 text-center">
+        <div id="doneCount" class="text-2xl font-bold text-green-400">0</div>
+        <div class="text-white/50 text-xs mt-1">Completed</div>
+      </div>
+      <div class="glass rounded-xl p-3 text-center">
+        <div id="leftCount" class="text-2xl font-bold text-yellow-400">0</div>
+        <div class="text-white/50 text-xs mt-1">Remaining</div>
+      </div>
+    </div>
+
+    <div class="glass rounded-xl px-4 py-2 mb-4 flex items-center gap-2">
+      <span class="text-white/40">🔍</span>
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search tasks..."
+        class="bg-transparent flex-1 text-white text-sm outline-none"
+        oninput="renderTasks()"
+      />
+    </div>
+
+    <div class="flex gap-2 mb-4 sm:mb-5 flex-wrap">
+      <button class="filter-btn active glass text-white/80 text-xs px-3 py-1.5 rounded-full border border-white/10"
+        onclick="setFilter('all', this)">All</button>
+      <button class="filter-btn glass text-white/80 text-xs px-3 py-1.5 rounded-full border border-white/10"
+        onclick="setFilter('active', this)">Active</button>
+      <button class="filter-btn glass text-white/80 text-xs px-3 py-1.5 rounded-full border border-white/10"
+        onclick="setFilter('completed', this)">Completed</button>
+      <button class="filter-btn glass text-white/80 text-xs px-3 py-1.5 rounded-full border border-white/10"
+        onclick="setFilter('starred', this)">⭐ Important</button>
+      <button class="filter-btn glass text-red-400 text-xs px-3 py-1.5 rounded-full border border-white/10 ml-auto"
+        onclick="clearCompleted()">Clear Done</button>
+    </div>
+
+    <div class="glass rounded-2xl p-4 mb-5">
+      <p class="text-white/40 text-xs uppercase tracking-widest mb-4 text-center">— Task List —</p>
+      <ul id="taskList" class="space-y-3 min-h-[40px]"></ul>
+      <p id="emptyMsg" class="text-white/30 text-sm text-center py-4 hidden">No tasks yet 🎉</p>
+    </div>
+
+    <div class="glass rounded-2xl p-4">
+      <p class="text-white/40 text-xs uppercase tracking-widest mb-4 text-center">— Add New Task —</p>
+      <div class="flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+        <input
+          id="taskInput"
+          type="text"
+          placeholder="Add task here..............."
+          class="flex-1 bg-transparent text-white text-sm outline-none border-b border-white/20 pb-1"
+          onkeydown="if(event.key === 'Enter') addTask()"
+        />
+        <input
+          id="dueDateInput"
+          type="date"
+          class="bg-transparent text-white/50 text-xs outline-none border-b border-white/20 pb-1 sm:w-28"
+          title="Due date (optional)"
+        />
+        <button onclick="addTask()" class="icon-btn text-2xl self-end sm:self-auto">⬆️</button>
+      </div>
+    </div>
+
+    <p class="text-center text-white/20 text-xs mt-6">
+      Drag tasks to reorder • Built with ❤️ &amp; Tailwind
+    </p>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>
